@@ -1,19 +1,21 @@
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
-import { Entry } from './journal3';
+import $ from 'jquery';
+import { Triangle } from './tracker';
+// import { checkType } from './tracker';
 
 $(document).ready(function() {
-  $('#journal-form').submit(function(event) {
+  $('.triangle-form').submit(function(event){
     event.preventDefault();
 
-    var post = new Entry($('#titleInput').val(), $('#bodyInput').val());
-    console.log(post);
-    // $("#displayTeaser").show();
-    $("#displayTeaser").append('<h3>' + post.getTeaser() + '</h3>');
-    $("#bodyLetterCounter").text("Your post has " + post.countWords() + " words.");
-    console.log(post.countWords());
-    $("#vowelCounter").text(post.countVowels());
-    console.log(post.countVowels());
+    var side1t = parseInt($('#input1').val());
+    var side2t = parseInt($('#input2').val());
+    var side3t = parseInt($('#input3').val());
 
+    var endResult = Triangle(side1t, side2t, side3t);
 
+    $("#result").text(endResult);
+    $(".result").show();
   });
 });
